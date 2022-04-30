@@ -2,20 +2,21 @@
 {% load static %}
 {% block title %}Home{% endblock %}
 {% block content %}
-        <div class="p-3 text-center">
-            <h1 style="text-decoration: underline;" class="mb-3">Posts</h1>
-            <h4 class="mb-3">Anonymously..</h4>
-            <a class="btn btn-primary" href="" role="button">Add a Post</a>
+<div class="container">
+    <div class="p-3 text-center">
+        <h1 style="text-decoration: underline;" class="mb-3">Posts</h1>
+        <h4 class="mb-3">Anonymously..</h4>
+        <a class="btn btn-primary" href="{% url 'new_post' %}" role="button">Add a Post</a>
+    </div>
+    {% for post in posts %}
+    <div class="card m-5">
+        <h5 class="card-header">{{ post.title }}</h5>
+        <div class="card-body">
+            <h6 class="card-title">Post #{{post.pk}}</h6>
+            <p class="card-text">{{ post.body|truncatechars:500 }}</p>
+            <a href="{% url 'post_detail' post.pk %}" class="btn btn-primary">Continue reading</a>
         </div>
-        {% for post in posts %}
-        <div class="mx-5">
-            <div class="d-flex justify-content-center flex-column m-4"></div>
-                <div class="card border-secondary">
-                    <div class="card-header">
-                    <a>{{ post.title }}</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        {% endfor %}
+      </div>
+    {% endfor %}
+</div>
 {% endblock %}

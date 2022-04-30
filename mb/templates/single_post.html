@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<div class="m-5">
+    <div class="card">
+        <h5 class="card-header">{{ post.title }}</h5>
+        <div class="card-body">
+          <p class="card-text">{{ post.body }}</p>
+          <a href="{% url 'posts' %}" class="btn btn-primary">Back</a>
+        </div>
+      </div>
+</div>
+{% endblock %}
